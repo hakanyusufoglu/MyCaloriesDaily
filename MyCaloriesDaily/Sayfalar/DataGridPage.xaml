@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MyCaloriesDaily.Sayfalar.DataGridPage">
+    <StackLayout Padding="20" Spacing="0">
+        <Label Margin="0,0,0,20" FontSize="Large" Text="Yenilen Gıdalar" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+        <Frame BackgroundColor="Crimson" BorderColor="DarkSlateGray" Padding="0">
+            <Grid Padding="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Margin="10,0,10,0" Text="Yemekler" VerticalOptions="Center" Grid.Column="0"></Label>
+                <Label Margin="10,0,10,0" Text="Turu" VerticalOptions="Center" Grid.Column="1"></Label>
+                <Label Margin="10,0,10,0" Text="Degeri" VerticalOptions="Center" Grid.Column="2"></Label>
+                <Label Margin="10,0,10,0" Text="ID" VerticalOptions="Center" Grid.Column="3"></Label>
+                
+                <BoxView BackgroundColor="DarkSlateGray" WidthRequest="1" Grid.Column="0" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                <BoxView BackgroundColor="DarkSlateGray" WidthRequest="1" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                <BoxView BackgroundColor="DarkSlateGray" WidthRequest="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                <BoxView BackgroundColor="DarkSlateGray" WidthRequest="1" Grid.Column="3" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+            </Grid>
+        </Frame>
+        <ListView x:Name="gridList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame  Padding="0">
+                            <Grid Padding="0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Margin="10,0,10,0" Text="Pizza" VerticalOptions="Center" Grid.Column="0"></Label>
+                                <Label Margin="10,0,10,0" Text="{Binding tur}" VerticalOptions="Center" Grid.Column="1"></Label>
+                                <Label Margin="10,0,10,0" Text="{Binding deger}" VerticalOptions="Center" Grid.Column="2"></Label>
+                                <Label Margin="10,0,10,0" Text="{Binding id}" VerticalOptions="Center" Grid.Column="3"></Label>
+
+                                <BoxView BackgroundColor="DarkSlateGray" WidthRequest="1" Grid.Column="0" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                <BoxView BackgroundColor="DarkSlateGray" WidthRequest="1" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                <BoxView BackgroundColor="DarkSlateGray" WidthRequest="1" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                                <BoxView BackgroundColor="DarkSlateGray" WidthRequest="1" Grid.Column="3" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

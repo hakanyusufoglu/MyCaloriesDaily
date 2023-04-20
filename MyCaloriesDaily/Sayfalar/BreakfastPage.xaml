@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:navigationdrawer="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:MyCaloriesDaily.Sayfalar"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms" xmlns:syncfusion1="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" xmlns:syncfusion2="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
+             x:Class="MyCaloriesDaily.Sayfalar.BreakfastPage" NavigationPage.HasNavigationBar="False">
+
+    <navigationdrawer:SfNavigationDrawer Grid.Row="0" x:Name="navigationDrawer"  DrawerWidth="260" DrawerHeaderHeight="50000">
+        <navigationdrawer:SfNavigationDrawer.ContentView>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="62"></RowDefinition>
+                    
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="52"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Orientation="Horizontal"  >
+                  
+                    <buttons:SfButton Grid.Row="0" Grid.Column="0" ImageSource="menu0.png"  Clicked="menuBtn_Clicked_1"
+                    BackgroundColor="Transparent" ShowIcon="True" ImageWidth="36" WidthRequest="36" HeightRequest="48" ></buttons:SfButton>
+
+                    <!-- <Button x:Name="menuButton" ImageSource="menu0.png"  WidthRequest="5" HeightRequest="5" Clicked="Button_Clicked"></Button>-->
+                    <Image HorizontalOptions="CenterAndExpand" Source="banner0.png" Aspect="AspectFit" WidthRequest="180" HeightRequest="180"></Image>
+                </StackLayout>
+                <StackLayout Grid.Row="1">
+                    <tabView:SfTabView  x:Name="tabView" VerticalOptions="FillAndExpand"  
+                       SelectionChanged="tabView_SelectionChanged" EnableSwiping="False"
+                           VisibleHeaderCount="3">
+                        <!-- selectionChanged: tabbedpage header kısmının kontrolunu sağlıyor-->
+                        <tabView:SfTabItem Title="Eklenenler"  >
+                            
+                            <tabView:SfTabItem.Content >
+
+                                <ScrollView BackgroundColor="#EDF2F5" Grid.Row="1">
+                                    <StackLayout >
+                                        <syncfusion2:SfExpander BackgroundColor="LightGray">
+                                            <syncfusion2:SfExpander.Header  >
+                                                <Grid>
+                                                    <StackLayout HeightRequest="36" Margin="8,10,0,0" BackgroundColor="LightGray" >
+                                                    <Label   TextColor="Black"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Kahvaltı" VerticalTextAlignment="Center" />
+                                                    </StackLayout>
+                                                </Grid>
+                                            </syncfusion2:SfExpander.Header>
+                                            <syncfusion2:SfExpander.Content>
+                                                <ScrollView>
+                                                <Grid  Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                                                    <ListView x:Name="gridList" HasUnevenRows="True" >
+                                                        <ListView.Header>
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Label Text="Ürün Adı" Grid.Column="0"></Label>
+                                                                <Label Text="Ürün Kalori"  HorizontalTextAlignment="Center" Grid.Column="1"></Label>
+                                                                <Label Text="Ürün Protein" HorizontalTextAlignment="Center" Grid.Column="2"></Label>
+                                                                <Label Text="Ürün Karbonhidrat" HorizontalTextAlignment="Center" Grid.Column="3"></Label>
+                                                                <Label Text="Ürün Yağ" HorizontalTextAlignment="End" Grid.Column="4"></Label>
+                                                            </Grid>
+                                                        </ListView.Header>
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <ViewCell>
+                                                                        <ViewCell.ContextActions>
+                                                                            <MenuItem Text="Satırı Sil" Clicked="MenuItem_Clicked" CommandParameter="{Binding .}"  IsDestructive="True"></MenuItem>
+                                                                        </ViewCell.ContextActions>
+                                                                    <Grid >
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+
+                                                                        </Grid.ColumnDefinitions>
+
+                                                                        <Label Grid.Column="0" TextColor="#303030" Text="{Binding urunAdi}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                                        <Label Grid.Column="1" HorizontalTextAlignment="Center" TextColor="#303030"  Text="{Binding urunKalori}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                                        <Label Grid.Column="2" HorizontalTextAlignment="Center" TextColor="#303030" Text="{Binding urunProtein}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                                        <Label Grid.Column="3" HorizontalTextAlignment="Center" TextColor="#303030" Text="{Binding urunKarbonhidrat}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                                        <Label Grid.Column="4" HorizontalTextAlignment="End" TextColor="#303030" Text="{Binding urunYag}" HeightRequest="50" VerticalTextAlignment="Center"/>
+
+
+                                                                    </Grid>
+
+                                                                </ViewCell>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+                                                       
+                                                    </ListView>
+                                                </Grid>
+                                                </ScrollView>
+                                            </syncfusion2:SfExpander.Content>
+                                        </syncfusion2:SfExpander>
+
+                                        <syncfusion2:SfExpander BackgroundColor="LightGray">
+                                            <syncfusion2:SfExpander.Header  >
+                                                <Grid>
+                                                    <StackLayout HeightRequest="36" Margin="8,10,0,0" BackgroundColor="LightGray" >
+                                                        <Label   TextColor="Black"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Öğle" VerticalTextAlignment="Center" />
+                                                    </StackLayout>
+                                                </Grid>
+                                            </syncfusion2:SfExpander.Header>
+                                            <syncfusion2:SfExpander.Content>
+                                                <Grid  Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                                                    <ListView x:Name="gridlistesi2">
+                                                        <ListView.Header>
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Label Text="Ürün Adı" Grid.Column="0"></Label>
+                                                                <Label Text="Ürün Kalori"  HorizontalTextAlignment="Center" Grid.Column="1"></Label>
+                                                                <Label Text="Ürün Protein" HorizontalTextAlignment="Center" Grid.Column="2"></Label>
+                                                                <Label Text="Ürün Karbonhidrat" HorizontalTextAlignment="Center" Grid.Column="3"></Label>
+                                                                <Label Text="Ürün Yağ" HorizontalTextAlignment="End" Grid.Column="4"></Label>
+                                                            </Grid>
+                                                        </ListView.Header>
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <ViewCell>
+
+                                                                    <Grid >
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+
+                                                                        </Grid.ColumnDefinitions>
+
+                                                                        <Label Grid.Column="0" TextColor="#303030" Text="{Binding urunAdi}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                                        <Label Grid.Column="1" HorizontalTextAlignment="Center" TextColor="#303030" Text="{Binding urunKalori}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                                        <Label Grid.Column="2" HorizontalTextAlignment="Center" TextColor="#303030" Text="{Binding urunProtein}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                                        <Label Grid.Column="3" HorizontalTextAlignment="Center" TextColor="#303030" Text="{Binding urunKarbonhidrat}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                                        <Label Grid.Column="4" HorizontalTextAlignment="End" TextColor="#303030" Text="{Binding urunYag}" HeightRequest="50" VerticalTextAlignment="Center"/>
+
+
+                                                                    </Grid>
+
+                                                                </ViewCell>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+
+                                                    </ListView>
+                                                </Grid>
+                                            </syncfusion2:SfExpander.Content>
+                                        </syncfusion2:SfExpander>
+
+                                        <syncfusion2:SfExpander BackgroundColor="LightGray">
+                                            <syncfusion2:SfExpander.Header  >
+                                                <Grid>
+                                                    <StackLayout HeightRequest="36" Margin="8,10,0,0" BackgroundColor="LightGray" >
+                                                        <Label   TextColor="Black"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Akşam" VerticalTextAlignment="Center" />
+                                                    </StackLayout>
+                                                </Grid>
+                                            </syncfusion2:SfExpander.Header>
+                                            <syncfusion2:SfExpander.Content>
+                                                <Grid  Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                                                    <ListView x:Name="gridlistesi3">
+                                                        <ListView.Header>
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Label Text="Ürün Adı" Grid.Column="0"></Label>
+                                                                <Label Text="Ürün Kalori"  HorizontalTextAlignment="Center" Grid.Column="1"></Label>
+                                                                <Label Text="Ürün Protein" HorizontalTextAlignment="Center" Grid.Column="2"></Label>
+                                                                <Label Text="Ürün Karbonhidrat" HorizontalTextAlignment="Center" Grid.Column="3"></Label>
+                                                                <Label Text="Ürün Yağ" HorizontalTextAlignment="End" Grid.Column="4"></Label>
+                                                            </Grid>
+                                                        </ListView.Header>
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <ViewCell>
+                                                                    <Grid >
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                            
+                                                                        </Grid.ColumnDefinitions>
+
+                                                                        <Label Grid.Column="0" TextColor="#303030" Text="{Binding urunAdi}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                                        <Label Grid.Column="1" HorizontalTextAlignment="Center" TextColor="#303030" Text="{Binding urunKalori}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                                        <Label Grid.Column="2" HorizontalTextAlignment="Center" TextColor="#303030" Text="{Binding urunProtein}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                                        <Label Grid.Column="3" HorizontalTextAlignment="Center" TextColor="#303030" Text="{Binding urunKarbonhidrat}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                                        <Label Grid.Column="4" HorizontalTextAlignment="End" TextColor="#303030" Text="{Binding urunYag}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                                        
+                                                                        
+                                                                    </Grid>
+                                                                    
+
+                                                                </ViewCell>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+
+                                                    </ListView>
+                                                </Grid>
+                                            </syncfusion2:SfExpander.Content>
+                                        </syncfusion2:SfExpander>
+                                        
+                                    </StackLayout>
+                                </ScrollView>
+
+                            </tabView:SfTabItem.Content>
+                        </tabView:SfTabItem>
+                        
+                        <tabView:SfTabItem Title="Kahvaltı Ekle" >
+                        <tabView:SfTabItem.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="60"></RowDefinition>
+                                        <RowDefinition Height="40"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <SearchBar  x:Name="kahvaltilikSearch" TextChanged="kahvaltilikSearch_TextChanged" Margin="0,8,0,0" Grid.Row="0" Placeholder="Yiyecekk yaz..." ></SearchBar>
+                                    <StackLayout Grid.Row="1" Margin="16,6,16,8" Orientation="Horizontal">
+                                        <Label Text="Yiyecek Türü"></Label>
+                                        <Label  HorizontalOptions="EndAndExpand" Text="Gram"></Label>
+                                    </StackLayout>
+                                   
+
+                                    <ScrollView Grid.Row="2">
+                          
+                                        <ListView Grid.Row="1" x:Name="kahvaltiListesi" ItemTapped="kahvaltiListesi_ItemTapped" >
+                                       
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                      
+                                                            <StackLayout  Margin="16,6,16,2" Orientation="Horizontal">
+
+                                                                <Label FontSize="14" TextColor="Black" Text="{Binding urunAdi}"></Label>
+                                                                <Label FontSize="12" HorizontalOptions="EndAndExpand" Text="{Binding urunGram}"></Label>
+                                                            </StackLayout>
+                                                      
+                                                        
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                    </ListView>
+                                    </ScrollView>
+                                </Grid>
+                        </tabView:SfTabItem.Content>
+                    </tabView:SfTabItem>
+                    <tabView:SfTabItem Title="Öğle Yemeği Ekle">
+                        <tabView:SfTabItem.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="60"></RowDefinition>
+                                        <RowDefinition Height="40"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <SearchBar TextChanged="ogleSearch_TextChanged"   x:Name="ogleSearch" Margin="0,8,0,0" Grid.Row="0" Placeholder="Yiyeceko yaz..." ></SearchBar>
+                                    <StackLayout Grid.Row="1" Margin="16,6,16,8" Orientation="Horizontal">
+                                        <Label Text="Yiyecek Türü"></Label>
+                                        <Label  HorizontalOptions="EndAndExpand" Text="Gram"></Label>
+                                    </StackLayout>
+                                    <ListView Grid.Row="2" x:Name="ogleListesi" ItemTapped="ogleListesi_ItemTapped" >
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout  Margin="16,6,16,2" Orientation="Horizontal">
+                                                        <Label FontSize="14" TextColor="Black" Text="{Binding urunAdi}"></Label>
+                                                        <Label FontSize="12" HorizontalOptions="EndAndExpand" Text="{Binding urunGram}"></Label>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </tabView:SfTabItem.Content>
+                    </tabView:SfTabItem>
+                    <tabView:SfTabItem Title="Akşam Yemeği Ekle">
+                            <tabView:SfTabItem.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="60"></RowDefinition>
+                                        <RowDefinition Height="40"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <SearchBar TextChanged="aksamSearch_TextChanged"  x:Name="aksamSearch" Margin="0,8,0,0" Grid.Row="0" Placeholder="yiyeceka yaz..." ></SearchBar>
+                                    <StackLayout Grid.Row="1" Margin="16,6,16,8" Orientation="Horizontal">
+                                        <Label Text="Yiyecek Türü"></Label>
+                                        <Label  HorizontalOptions="EndAndExpand" Text="Gram"></Label>
+                                    </StackLayout>
+                                    <ListView Grid.Row="2"  x:Name="aksamListesi" ItemTapped="aksamListesi_ItemTapped" >
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout  Margin="16,6,16,2" Orientation="Horizontal">
+                                                        <Label FontSize="14" TextColor="Black" Text="{Binding urunAdi}"></Label>
+                                                        <Label FontSize="12" HorizontalOptions="EndAndExpand" Text="{Binding urunGram}"></Label>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                        </tabView:SfTabItem.Content>
+
+                        </tabView:SfTabItem>
+                        
+                        
+                    </tabView:SfTabView>
+                </StackLayout>
+
+                <Grid Grid.Row="2" HorizontalOptions="CenterAndExpand">
+                    <!--alt menuler-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <buttons:SfButton  Grid.Column="0" TextColor="Black"  Text="Topluluk" Clicked="communityBtn_Clicked_1" ImageSource="community0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Top"  ></buttons:SfButton>
+                    <buttons:SfButton  Grid.Column="1" TextColor="Black"  Text="Ana Sayfa" Clicked="homeBtn_Clicked" ImageSource="homeicon0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Top"  ></buttons:SfButton>
+                    <buttons:SfButton  Grid.Column="2" TextColor="Black" Text="Günlük" Clicked="reportBtn_Clicked"  ImageSource="report0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Top"  ></buttons:SfButton>
+
+                </Grid>
+
+             
+
+
+
+            </Grid>
+
+        </navigationdrawer:SfNavigationDrawer.ContentView>
+        <navigationdrawer:SfNavigationDrawer.DrawerHeaderView>
+            <Grid BackgroundColor="#FFFFFF">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="180"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" BackgroundColor="#3498DB" >
+                    <Image Margin="0,18,0,0" x:Name="userImage" Source="userprofile.png" WidthRequest="120" HeightRequest="120"></Image>
+                    <Label FontAttributes="Bold" x:Name="isimSoyisim" TextColor="White" HorizontalOptions="CenterAndExpand" Text="Hoşgeldiniz Hakan Yusufoğlu"></Label>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Margin="6,55,0,0" Spacing="20">
+                    <!--acilir menu buttonları-->
+                    <buttons:SfButton FontSize="16"  TextColor="Black"  Text="Ana Sayfa" Clicked="homeBtn_Clicked"  ImageSource="homeicon0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start" HorizontalTextAlignment="Start"  ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black"  HorizontalTextAlignment="Start" Text="Topluluk" Clicked="communityBtn_Clicked_1" ImageSource="community0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black" Text="Günlük" ImageSource="report0.png"  Clicked="reportBtn_Clicked"
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  HorizontalTextAlignment="Start" ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black" Text="Besin Değerini Öğren" Clicked="nutritiveBtn_Clicked_1" ImageSource="fish0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  HorizontalTextAlignment="Start" ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black" Text="Bize Ulaşın" Clicked="contactUsBtn_Clicked_1" ImageSource="feedback0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  HorizontalTextAlignment="Start" ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black" Text="Ayarlar"  ImageSource="settings0.png"  x:Name="btnSettings" Clicked="btnSettings_Clicked"
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  HorizontalTextAlignment="Start" ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black" Text="Oturumu Kapat"  ImageSource="oturum0.png"   x:Name="oturumBtn" Clicked="oturumBtn_Clicked"
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  HorizontalTextAlignment="Start" ></buttons:SfButton>
+                </StackLayout>
+            </Grid>
+        </navigationdrawer:SfNavigationDrawer.DrawerHeaderView>
+    </navigationdrawer:SfNavigationDrawer>
+</ContentPage>

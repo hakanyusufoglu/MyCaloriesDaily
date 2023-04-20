@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+             mc:Ignorable="d"
+             x:Class="MyCaloriesDaily.Sayfalar.Kayitol_3" NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition Height="470"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackLayout Margin="20,40,20,0" >
+        <Label FontSize="24" FontAttributes="Bold" FontFamily="Arial" Text="Günlük ne kadar hareket ediyorsunuz?"></Label>
+        </StackLayout>
+        <Grid Grid.Row="1" Margin="20,10,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="220"></RowDefinition>
+                <RowDefinition Height="220"></RowDefinition>
+               
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+               
+            </Grid.ColumnDefinitions>
+            
+            <buttons:SfButton Grid.Row="0" Grid.Column="0" TextColor="Black" FontAttributes="Bold" Text="Az hareket ediyorum."  ImageSource="relax1.jpg"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageWidth="180" ImageAlignment="Top" Clicked="hareketYokBtn_Clicked" ></buttons:SfButton>
+
+            <buttons:SfButton Grid.Row="0" Grid.Column="1" TextColor="Black" FontAttributes="Bold" Text="Yürüyüş yapıyorum."  ImageSource="azhareket.jpg"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageWidth="180" ImageAlignment="Top" Clicked="azHareket_Clicked" ></buttons:SfButton>
+
+            <buttons:SfButton Grid.Row="1" Grid.Column="0" TextColor="Black" FontAttributes="Bold" Text="Çoğu kez spor yapıyorum"   ImageSource="gun2hareket.jpg"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageWidth="180" ImageAlignment="Top" Clicked="coguKezSporBtn_Clicked" ></buttons:SfButton>
+
+            <buttons:SfButton Grid.Row="1" Grid.Column="1" TextColor="Black" FontAttributes="Bold"  Text="Sıklıkla spor yapıyorum."  ImageSource="cokhareket.jpg"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageWidth="180" ImageAlignment="Top" Clicked="sikliklaBtn_Clicked" ></buttons:SfButton>
+        </Grid>
+        <Grid Grid.Row="2">
+            <progressBar:SfStepProgressBar HorizontalOptions="Center" VerticalOptions="Center">
+                <progressBar:StepView PrimaryText="İlk Adım"   />
+                <progressBar:StepView PrimaryText="2. Adım" Status="InProgress" />
+                <progressBar:StepView PrimaryText="3. Adım" />
+                <progressBar:StepView PrimaryText="Son Adım"   />
+            </progressBar:SfStepProgressBar>
+        </Grid>
+       
+        
+    </Grid>
+</ContentPage>

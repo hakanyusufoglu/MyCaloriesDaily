@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MyCaloriesDaily.Sayfalar.GirisSayfasi" NavigationPage.HasNavigationBar="False">
+
+    <Grid> 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="240"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            
+        </Grid.RowDefinitions>
+        <Image Margin="20" Source="image.jfif"></Image>
+        <Image Grid.Row="1" Source="AnaBaslik4.png"></Image>
+        <StackLayout Margin="20,40" Grid.Row="2" >
+            <Entry x:Name="emailText" Placeholder="Email Giriniz" ></Entry>
+            <Entry  x:Name="passText" IsPassword="True" Placeholder="Şifre Giriniz" ></Entry>
+            <buttons:SfButton BackgroundColor="#36B2E8" Text="Giriş Yap" Clicked="girisBtn_Clicked" TextColor="white" Grid.Row="1"></buttons:SfButton>
+            <Label HorizontalOptions="End" Grid.Row="2" Text="Şifremi unuttum"></Label>
+           
+        </StackLayout>
+        <Grid Grid.Row="3" ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Text="Üye değil misiniz?" Grid.Column="2"></Label>
+            <Label Text="Kayıt Ol" TextDecorations="Underline" TextColor="Black"  Grid.Column="3">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+    </Grid>
+</ContentPage>

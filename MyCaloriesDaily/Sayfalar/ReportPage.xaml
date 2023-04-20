@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:navigationdrawer="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:MyCaloriesDaily.Sayfalar" xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             x:Class="MyCaloriesDaily.Sayfalar.ReportPage" NavigationPage.HasNavigationBar="False">
+    <navigationdrawer:SfNavigationDrawer Grid.Row="0" x:Name="navigationDrawer"  DrawerWidth="260" DrawerHeaderHeight="50000">
+        <navigationdrawer:SfNavigationDrawer.ContentView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="62"></RowDefinition>
+
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="52"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Orientation="Horizontal"  >
+
+                    <buttons:SfButton Grid.Row="0" Grid.Column="0" ImageSource="menu0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageWidth="36" WidthRequest="36" HeightRequest="48" Clicked="menuBtn_Clicked" ></buttons:SfButton>
+
+                    <!-- <Button x:Name="menuButton" ImageSource="menu0.png"  WidthRequest="5" HeightRequest="5" Clicked="Button_Clicked"></Button>-->
+                    <Image HorizontalOptions="CenterAndExpand" Source="banner0.png" Aspect="AspectFit" WidthRequest="180" HeightRequest="180"></Image>
+                </StackLayout>
+
+
+                <!--contentview-->
+            
+
+                    <Grid  Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Grid.Column="0" FontSize="14" FontAttributes="Bold" Margin="0,10,0,0" Text="Rapor Tarihini Seçiniz: "></Label>
+                        <DatePicker x:Name="tarihAlani" Grid.Column="1"  HorizontalOptions="Center" DateSelected="tarihAlani_DateSelected"></DatePicker>
+                    </StackLayout>
+                </Grid>
+                <!-- grafikleştirme fframei -->
+                <!-- <ScrollView Grid.Row="2 ">-->
+                    <StackLayout Grid.Row="2" >
+                    
+                    <Frame HasShadow="True" Margin="0,0,0,12" >
+                       
+                        <Grid Grid.Row="2">
+                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="180"></RowDefinition>
+                                <RowDefinition Height="60"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label HorizontalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0" x:Name="lblAlinanKalori" Text="Alınan Kalori: 2190 kcal" FontSize="14"></Label>
+                            <Label HorizontalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="1"  x:Name="lblKaloriSiniri" Text="Kalori Sınıfı: 2500 kcal" FontSize="14"></Label>
+                            <!--PASTA GRAFİĞİ OLUŞTURUYORUM-->
+                            <chart:SfChart HorizontalOptions="CenterAndExpand" Margin="0,-140,0,0" Grid.Row="1" Grid.ColumnSpan="2" >
+                                <chart:SfChart.Legend>
+                                    <chart:ChartLegend>
+                                        <chart:ChartLegend.LabelStyle>
+                                            <chart:ChartLegendLabelStyle Font="15">
+                                            </chart:ChartLegendLabelStyle>
+                                        </chart:ChartLegend.LabelStyle>
+                                    </chart:ChartLegend>
+                                </chart:SfChart.Legend>
+
+                                <chart:SfChart.Series>
+                                    <chart:PieSeries EnableAnimation="True" ExplodeAll="True" EnableTooltip="True"  EnableSmartLabels="True" x:Name="pieChart"  XBindingPath="tur" YBindingPath="deger"></chart:PieSeries>
+                                </chart:SfChart.Series>
+                            </chart:SfChart>
+                            <!--DATAGRİD OLUŞTURDUM-->
+                            <StackLayout Grid.Row="2" Grid.ColumnSpan="2"   > 
+                                    <Label Margin="0,0,0,20" FontSize="Medium" TextColor="Black" Text="Yenilen Gıdalar"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                                
+                                    <Grid  Padding="4,8,4,4" BackgroundColor="#FFFFFF">
+                                        <ListView x:Name="gridList"  >
+                                            <ListView.Header  >
+                                                <Grid>
+                                                   
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                <StackLayout  Grid.ColumnSpan="7" BackgroundColor="#FF9999" Orientation="Horizontal" WidthRequest="800" Spacing="8">
+                                                        <Label TextColor="White" Text="Ürün Adı" Grid.Column="0"></Label>
+                                                        <Label TextColor="White" Text="Ürün Kalori"  HorizontalTextAlignment="Center" Grid.Column="1"></Label>
+                                                        <Label TextColor="White" Text="Ürün Kalori"  HorizontalTextAlignment="Center" Grid.Column="2"></Label>
+                                                        <Label TextColor="White" Text="Ürün Protein (100 gr)" HorizontalTextAlignment="Center" Grid.Column="3"></Label>
+                                                        <Label TextColor="White" Text="Ürün Karbonhidrat (100 gr)"  HorizontalTextAlignment="Center" Grid.Column="4"></Label>
+                                                        <Label TextColor="White" Text="Ürün Yağ (100 gr" HorizontalTextAlignment="End" Grid.Column="5"></Label>
+
+                                                        </StackLayout>
+                                                </Grid>
+                                            </ListView.Header>
+                                      
+                                            <ListView.ItemTemplate>
+                                          
+                                                <DataTemplate>
+                                            
+                                                    <ViewCell>
+                                                    <ScrollView>
+                                                        <Grid >
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+
+                                                            </Grid.ColumnDefinitions>
+
+                                                            <Label Grid.Column="0" TextColor="#303030" Text="{Binding urunAdi}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                            <Label Grid.Column="1" HorizontalTextAlignment="Center" TextColor="#303030"  Text="{Binding urunKalori}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                            <Label Grid.Column="2" HorizontalTextAlignment="Center" TextColor="#303030"  Text="{Binding urunGram}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                            <Label Grid.Column="3" HorizontalTextAlignment="Center" TextColor="#303030" Text="{Binding urunProtein}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                            <Label Grid.Column="4" HorizontalTextAlignment="Center" TextColor="#303030" Text="{Binding urunKarbonhidrat}" HeightRequest="50" VerticalTextAlignment="Center"/>
+                                                            <Label Grid.Column="5" HorizontalTextAlignment="End" TextColor="#303030" Text="{Binding urunYag}" HeightRequest="50" VerticalTextAlignment="Center"/>
+
+
+                                                        </Grid>
+                                                </ScrollView>
+                                                </ViewCell>
+
+                                         
+                                            </DataTemplate>
+                                   
+                                        </ListView.ItemTemplate>
+                                     
+                                    </ListView>
+                                    </Grid>
+                          
+
+                            </StackLayout>
+                        </Grid>
+                      
+                    </Frame>
+
+
+               
+
+                </StackLayout>
+                    <!-- </ScrollView>-->
+                    <Grid Grid.Row="3" HorizontalOptions="CenterAndExpand">
+                    <!--alt menuler-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <buttons:SfButton  Grid.Column="0" TextColor="Black"  Text="Topluluk" Clicked="communityBtn_Clicked_1" ImageSource="community0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Top"  ></buttons:SfButton>
+                    <buttons:SfButton  Grid.Column="1" TextColor="Black"  Text="Ana Sayfa" Clicked="homeBtn_Clicked" ImageSource="homeicon0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Top"  ></buttons:SfButton>
+                    <buttons:SfButton  Grid.Column="2" TextColor="Black" Text="Günlük" Clicked="reportBtn_Clicked" ImageSource="report1.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Top"  ></buttons:SfButton>
+
+                </Grid>
+
+
+
+
+            </Grid>
+
+        </navigationdrawer:SfNavigationDrawer.ContentView>
+        <navigationdrawer:SfNavigationDrawer.DrawerHeaderView>
+            <Grid BackgroundColor="#FFFFFF">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="180"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" BackgroundColor="#3498DB" >
+                    <Image Margin="0,18,0,0" x:Name="userImage" Source="userprofile.png" WidthRequest="120" HeightRequest="120"></Image>
+                    <Label FontAttributes="Bold" x:Name="isimSoyisim" TextColor="White" HorizontalOptions="CenterAndExpand" Text="Hoşgeldiniz Hakan Yusufoğlu"></Label>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Margin="6,55,0,0" Spacing="20">
+                    <!--acilir menu buttonları-->
+                    <buttons:SfButton FontSize="16"  TextColor="Black"  Text="Ana Sayfa" Clicked="homeBtn_Clicked" ImageSource="homeicon0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start" HorizontalTextAlignment="Start"  ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black"  HorizontalTextAlignment="Start" Text="Topluluk" Clicked="communityBtn_Clicked_1" ImageSource="community0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black" Text="Günlük" Clicked="reportBtn_Clicked" ImageSource="report1.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  HorizontalTextAlignment="Start" ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black" Text="Besin Değerini Öğren" Clicked="nutritiveBtn_Clicked_1" ImageSource="fish0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  HorizontalTextAlignment="Start" ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black" Text="Bize Ulaşın" Clicked="contactUsBtn_Clicked_1" ImageSource="feedback0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  HorizontalTextAlignment="Start" ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black" Text="Ayarlar"  ImageSource="settings0.png"  x:Name="settingsBtn" Clicked="settingsBtn_Clicked"
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  HorizontalTextAlignment="Start" ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black" Text="Oturumu Kapat"  ImageSource="oturum0.png"  x:Name="oturumKapat" Clicked="oturumKapat_Clicked"
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  HorizontalTextAlignment="Start" ></buttons:SfButton>
+                </StackLayout>
+            </Grid>
+        </navigationdrawer:SfNavigationDrawer.DrawerHeaderView>
+    </navigationdrawer:SfNavigationDrawer>
+
+</ContentPage>
+

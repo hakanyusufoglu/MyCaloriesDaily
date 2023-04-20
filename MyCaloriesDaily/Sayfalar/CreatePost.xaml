@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             mc:Ignorable="d"
+             x:Class="MyCaloriesDaily.Sayfalar.CreatePost" NavigationPage.BackButtonTitle="Gönderi Oluştur">
+    <StackLayout >
+        <Frame>
+        <Grid>
+            <Grid.RowDefinitions>
+               
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+        
+            <ScrollView Grid.Row="0">
+                <!--contentview-->
+                <StackLayout  >
+                    <!--gönderi kısmı-->
+                    <Frame  HasShadow="True" >
+                        <StackLayout Grid.Row="1" >
+
+                            <StackLayout Orientation="Horizontal"  >
+                                
+                                <!--resim ve isim alanı-->
+                                <Image x:Name="userImage" Source="userprofile.png" Aspect="AspectFit" WidthRequest="48" HeightRequest="48"  HorizontalOptions="Start"></Image>
+                                    <Label  Margin="10,0" x:Name="lblKullanici" Text="Hakan Yusufoğlu" HorizontalOptions="Start" FontAttributes="Bold"></Label>
+                            </StackLayout>
+                                <StackLayout>
+                                    <Label Text="Ne Düşünüyorsun?" FontSize="14" FontAttributes="Bold" HorizontalOptions="StartAndExpand" Margin="0,28,0,0"></Label>
+                                    <Frame Margin="0,8,0,0" HasShadow="True" BorderColor="LightGray" >
+                                        <Entry x:Name="icerikYazisi" Keyboard="Plain" HeightRequest="220" Margin="0,-80,0,0" ></Entry>
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" Spacing="12">
+                                    
+                                    <buttons:SfButton x:Name="cameraClick" ImageSource="camera0.png"   HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" ShowIcon="True" ImageWidth="32" WidthRequest="32" HeightRequest="32"  ></buttons:SfButton>
+                                    <buttons:SfButton ImageSource="gallery0.png"   HorizontalOptions="End" BackgroundColor="Transparent" ShowIcon="True" ImageWidth="32" WidthRequest="32" HeightRequest="32"  ></buttons:SfButton>
+                                </StackLayout>
+                                <buttons:SfButton Margin="0,16,0,0" Text="Paylaş" BackgroundColor="#36B2E8" Clicked="postSend_Clicked_2"></buttons:SfButton>
+                    </StackLayout>
+
+        </Frame>
+                </StackLayout>
+
+
+
+
+            </ScrollView>
+
+       
+
+
+
+
+        </Grid>
+        </Frame>
+    </StackLayout>
+</ContentPage>

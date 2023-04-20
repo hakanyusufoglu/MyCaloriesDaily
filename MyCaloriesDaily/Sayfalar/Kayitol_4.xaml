@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             
+             
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             mc:Ignorable="d"
+             x:Class="MyCaloriesDaily.Sayfalar.Kayitol_4" Title="Lütfen Gerekli Bilgileri Giriniz" NavigationPage.HasBackButton="True"  NavigationPage.HasNavigationBar="True"
+             >
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="68"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Frame  Grid.Row="0" Margin="4" HasShadow="True" >
+            <StackLayout Spacing="6">
+                
+                <inputLayout:SfTextInputLayout
+    Hint="İsim Giriniz"
+                  x:Name="isimKontrol"
+                   ContainerType="Outlined"
+                    OutlineCornerRadius="8"
+                     ErrorText="Gerekli alan*"  
+    LeadingViewPosition="Inside"  >
+
+                    <Entry x:Name="isimText" />
+                    <inputLayout:SfTextInputLayout.LeadingView>
+                        <Image Source="person.png"></Image>
+                    </inputLayout:SfTextInputLayout.LeadingView>
+                  
+                </inputLayout:SfTextInputLayout>
+
+                <inputLayout:SfTextInputLayout
+                    Hint="Soyisim Giriniz"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="8"
+                    HasError="False"
+                   x:Name="soyisimKontrol"
+                    ErrorText="Gerekli alan*"
+                     LeadingViewPosition="Inside" >
+
+                    <Entry x:Name="soyisimText" />
+                    <inputLayout:SfTextInputLayout.LeadingView>
+                        <Image Source="person.png"></Image>
+                    </inputLayout:SfTextInputLayout.LeadingView>
+
+                </inputLayout:SfTextInputLayout>
+
+                <inputLayout:SfTextInputLayout ContainerType="Outlined"
+                               Hint="Doğum Tarihi" 
+                                           TrailingViewPosition="Inside"
+                                               LeadingViewPosition="Inside"
+                                               x:Name="tarihKontrol"
+                                                ErrorText="Gerekli alan*"
+                               >
+                    <inputLayout:SfTextInputLayout.LeadingView>
+                        <Image Source="birtday.png"></Image>
+                    </inputLayout:SfTextInputLayout.LeadingView>
+                    <DatePicker x:Name="dogumTarihi" MinimumDate="01/01/1925"
+            MaximumDate="12/31/2022" 
+            Date="07/21/1997"/>
+                </inputLayout:SfTextInputLayout>
+
+                <inputLayout:SfTextInputLayout
+                    Hint="Email Adresi"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="8"
+                    HasError="False"
+                    x:Name="emailKontrol"
+                    ErrorText="Gerekli alan*"
+                    
+                     LeadingViewPosition="Inside" >
+                    <Entry x:Name="emailText" Keyboard="Email" />
+                    <inputLayout:SfTextInputLayout.LeadingView>
+                        <Image Source="email.png"></Image>
+                    </inputLayout:SfTextInputLayout.LeadingView>
+
+                </inputLayout:SfTextInputLayout>
+
+                <inputLayout:SfTextInputLayout
+                    Hint="Şifre"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="8"
+                    HasError="False"
+                    x:Name="passKontrol"
+                    EnablePasswordVisibilityToggle="True"
+                    ErrorText="Gerekli alan*"
+                     LeadingViewPosition="Inside" >
+                    <Entry x:Name="passText" Keyboard="Default" IsPassword="True" />
+                    <inputLayout:SfTextInputLayout.LeadingView>
+                        <Image Source="passwordicon.png"></Image>
+                    </inputLayout:SfTextInputLayout.LeadingView>
+
+                </inputLayout:SfTextInputLayout>
+                <Label FontSize="14" Text="Hedefiniz Nedir?"></Label>
+                <StackLayout Orientation="Horizontal" Margin="0,0,36,0">
+                    <buttons:SfRadioGroup Orientation="Horizontal" x:Name="radioGrup">
+                <buttons:SfRadioButton  Text="Kilo Vermek" IsChecked="True" x:Name="radioKiloVermek" ></buttons:SfRadioButton>
+                <buttons:SfRadioButton Text="Kilo Korumak" x:Name="radioKiloKorumak"></buttons:SfRadioButton>
+                <buttons:SfRadioButton Text="Kilo Almak" x:Name="radioKiloAlmak"></buttons:SfRadioButton>
+                    </buttons:SfRadioGroup>
+                </StackLayout>
+
+
+
+
+                <buttons:SfButton Margin="0,20,0,0"   Text="İlerle" BackgroundColor="#36B2E8" PressedBackgroundColor="Black" HorizontalOptions="CenterAndExpand"  Clicked="ilerleBtn_Clicked" ></buttons:SfButton>
+
+                
+            </StackLayout>
+         
+        </Frame>
+        <Grid Grid.Row="1">
+            <progressBar:SfStepProgressBar HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,18">
+                <progressBar:StepView PrimaryText="İlk Adım"  />
+                <progressBar:StepView PrimaryText="2. Adım"  />
+                <progressBar:StepView PrimaryText="3. Adım" Status="InProgress" />
+                <progressBar:StepView PrimaryText="Son Adım"  />
+             
+            </progressBar:SfStepProgressBar>
+        </Grid>
+        
+           
+        
+    </Grid>
+</ContentPage>

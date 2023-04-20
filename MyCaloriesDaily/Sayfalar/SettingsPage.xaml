@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d"
+             x:Class="MyCaloriesDaily.Sayfalar.SettingsPage">
+    <ScrollView>
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="220">
+                
+            </RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0" BackgroundColor="#2980C5">
+            <buttons:SfButton Margin="0,4,0,0" ImageSource="add.png" x:Name="imageBtn" Clicked="resimYukle_Clicked"  TextColor="White" FontAttributes="Bold" Text="Resim Eklemek İçin Tıkla"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageWidth="86" HeightRequest="220" ImageAlignment="Top" HorizontalTextAlignment="Center"  VerticalTextAlignment="End"  ></buttons:SfButton>
+        </StackLayout>
+        <Frame Grid.Row="1" HasShadow="True">
+                <StackLayout Grid.Row="1">
+                    <Label x:Name="lblKullaniciAdi" Text="Merhaba Hakan Yusufoğlu" Margin="6,12,6,6" FontSize="16" FontAttributes="Bold"></Label>
+                    <Label Text="Güncellemek istediğiniz alanları altta ki kutucuklardan değiştirebilirsiniz" FontSize="14" Margin="0,14,0,0" ></Label>
+                    <inputLayout:SfTextInputLayout
+                    Hint="Email Adresi"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="8"
+                    HasError="False"
+                    x:Name="emailKontrol"
+                    ErrorText="Gerekli alan*"
+                    
+                     LeadingViewPosition="Inside" >
+                        <Entry x:Name="emailText" Keyboard="Email" />
+                        <inputLayout:SfTextInputLayout.LeadingView>
+                            <Image Source="email.png"></Image>
+                        </inputLayout:SfTextInputLayout.LeadingView>
+
+                    </inputLayout:SfTextInputLayout>
+                    <inputLayout:SfTextInputLayout ContainerType="Outlined"
+                               Hint="Doğum Tarihi" 
+                                           TrailingViewPosition="Inside"
+                                               LeadingViewPosition="Inside"
+                                               x:Name="tarihKontrol"
+                                                ErrorText="Gerekli alan*"
+                               >
+                        <inputLayout:SfTextInputLayout.LeadingView>
+                            <Image Source="birtday.png"></Image>
+                        </inputLayout:SfTextInputLayout.LeadingView>
+                        <DatePicker x:Name="dogumTarihi" MinimumDate="01/01/1925"
+            MaximumDate="12/31/2022" 
+            Date="07/21/1997"/>
+                    </inputLayout:SfTextInputLayout>
+                </StackLayout>
+            </Frame>
+            <Frame HasShadow="True" Grid.Row="2" Margin="0,0,0,0">
+                <StackLayout Grid.Row="2" Margin="0,-18,0,0">
+                    <Label Text="Kişisel Bilgiler"></Label>
+                <inputLayout:SfTextInputLayout
+                        
+                    Hint="Boyunuzu (cm) cinsinden giriniz"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="8"
+                    HasError="False"
+                x:Name="boyKontrol"
+                    ErrorText="Gerekli alan*"
+                     LeadingViewPosition="Inside" >
+                    <Entry x:Name="boyText" Keyboard="Numeric" />
+                    <inputLayout:SfTextInputLayout.LeadingView>
+                        <Image Source="height.png"></Image>
+                    </inputLayout:SfTextInputLayout.LeadingView>
+
+                </inputLayout:SfTextInputLayout>
+                    <inputLayout:SfTextInputLayout
+                    Hint="kilonuzu (kg) cinsinden giriniz"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="8"
+                    HasError="False"
+                x:Name="kilogramKontrol"
+                    ErrorText="Gerekli alan*"
+                     LeadingViewPosition="Inside" >
+                        <Entry x:Name="kilogramText" Keyboard="Numeric"  />
+                        <inputLayout:SfTextInputLayout.LeadingView>
+                            <Image  Source="weight.png"></Image>
+                        </inputLayout:SfTextInputLayout.LeadingView>
+
+                    </inputLayout:SfTextInputLayout>
+                    <Label FontSize="14" Text="Hedefinizi Güncelle"></Label>
+                    <StackLayout Orientation="Horizontal" Margin="0,0,36,0">
+                        <buttons:SfRadioGroup Orientation="Horizontal" x:Name="radioGrup">
+                            <buttons:SfRadioButton  Text="Kilo Vermek" IsChecked="True" x:Name="radioKiloVermek" ></buttons:SfRadioButton>
+                            <buttons:SfRadioButton Text="Kilo Korumak" x:Name="radioKiloKorumak"></buttons:SfRadioButton>
+                            <buttons:SfRadioButton Text="Kilo Almak" x:Name="radioKiloAlmak"></buttons:SfRadioButton>
+                        </buttons:SfRadioGroup>
+                    </StackLayout>
+                    <buttons:SfButton Margin="0,10,0,0"  Clicked="tamamlaBtn_Clicked" Text="Tamamla " BackgroundColor="#36B2E8" PressedBackgroundColor="Black" HorizontalOptions="CenterAndExpand"  ></buttons:SfButton>
+                </StackLayout>
+            </Frame>
+      
+    </Grid>
+    </ScrollView>
+</ContentPage>

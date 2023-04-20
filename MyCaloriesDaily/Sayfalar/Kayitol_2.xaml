@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+             mc:Ignorable="d"
+             x:Class="MyCaloriesDaily.Sayfalar.Kayitol_2">
+    <Grid BackgroundColor="#FFFFF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="180"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="240"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <StackLayout Grid.Row="0" Margin="20,40,20,0"  >
+            <Label FontSize="24" FontFamily="Arial" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Start" FontAttributes="Bold"  TextColor="Black" Text="En uygun kalori hesabı için bazı bilgilere ihtiyacımız var. "></Label>
+        </StackLayout>
+        <StackLayout Grid.Row="1" Margin="20,0,20,0"  >
+            <Label FontSize="22" FontFamily="Arial" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Start" FontAttributes="Bold"  TextColor="Black" Text="Cinsiyetiniz Seçiniz"></Label>
+        </StackLayout>
+        <Grid Grid.Row="2"  Margin="20,0,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <buttons:SfButton Grid.Column="0"  HeightRequest="60" WidthRequest="280" ShadowColor="Black" HasShadow="True" BackgroundColor="Transparent" PressedBackgroundColor="Black" HorizontalOptions="CenterAndExpand" BackgroundImage="woman.png" Clicked="womanBtn_Clicked" ></buttons:SfButton>
+            <buttons:SfButton Grid.Column="1"  HeightRequest="60" WidthRequest="200" ShadowColor="Black" HasShadow="True" BackgroundColor="Transparent" PressedBackgroundColor="Black" HorizontalOptions="CenterAndExpand" BackgroundImage="man3.png" Clicked="manBtn_Clicked" ></buttons:SfButton>
+           
+        </Grid>
+        <Grid Grid.Row="3">
+            <progressBar:SfStepProgressBar HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,18">
+                <progressBar:StepView PrimaryText="İlk Adım" Status="InProgress"  />
+                <progressBar:StepView PrimaryText="2. Adım"  />
+                <progressBar:StepView PrimaryText="3. Adım" />
+                <progressBar:StepView PrimaryText="Son Adım"   />
+
+            </progressBar:SfStepProgressBar>
+        </Grid>
+      
+    </Grid>
+      
+</ContentPage>

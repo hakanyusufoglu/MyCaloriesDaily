@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             mc:Ignorable="d"
+             x:Class="MyCaloriesDaily.Sayfalar.Kayitol_5">
+    <Grid>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+            <StackLayout Margin="10,20,10,0"  Grid.Row="0" >
+                <Image WidthRequest="208"  Source="robotandTalk.jpg"></Image>
+                <Label  FontSize="20" FontAttributes="Bold" TextColor="Black"   HorizontalTextAlignment="Center" Text="Hey Tekrar Merhaba,&#x0a;kalori hesabı için boy ve kilonuzu giriniz" HorizontalOptions="CenterAndExpand"></Label>
+
+            </StackLayout>
+        <StackLayout Grid.Row="1" Margin="40,20,40,0" Spacing="1">
+
+            <inputLayout:SfTextInputLayout
+                    Hint="Boyunuzu (cm) cinsinden giriniz"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="8"
+                    HasError="False"
+                x:Name="boyKontrol"
+                    ErrorText="Gerekli alan*"
+                     LeadingViewPosition="Inside" >
+                <Entry x:Name="boyText" Keyboard="Numeric" />
+                <inputLayout:SfTextInputLayout.LeadingView>
+                    <Image Source="height.png"></Image>
+                </inputLayout:SfTextInputLayout.LeadingView>
+
+            </inputLayout:SfTextInputLayout>
+            <inputLayout:SfTextInputLayout
+                    Hint="kilonuzu (kg) cinsinden giriniz"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="8"
+                    HasError="False"
+                x:Name="kilogramKontrol"
+                    ErrorText="Gerekli alan*"
+                     LeadingViewPosition="Inside" >
+                <Entry x:Name="kilogramText" Keyboard="Numeric" TextChanged="kilogramText_TextChanged" />
+                <inputLayout:SfTextInputLayout.LeadingView>
+                    <Image  Source="weight.png"></Image>
+                </inputLayout:SfTextInputLayout.LeadingView>
+
+            </inputLayout:SfTextInputLayout>
+            
+            <buttons:SfButton    Text="Tamamla " BackgroundColor="#36B2E8" PressedBackgroundColor="Black" HorizontalOptions="CenterAndExpand"  Clicked="tamamlaBtn_Clicked"></buttons:SfButton>
+        </StackLayout>
+        <Grid Grid.Row="2" >
+            <progressBar:SfStepProgressBar HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,18">
+                <progressBar:StepView PrimaryText="İlk Adım"  />
+                <progressBar:StepView PrimaryText="2. Adım"  />
+                <progressBar:StepView PrimaryText="3. Adım" />
+                <progressBar:StepView PrimaryText="Son Adım" Status="InProgress"   />
+
+            </progressBar:SfStepProgressBar>
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:gauge="clr-namespace:Syncfusion.SfGauge.XForms;assembly=Syncfusion.SfGauge.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:navigationdrawer="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d"
+             x:Class="MyCaloriesDaily.Sayfalar.CommunityPage" NavigationPage.HasNavigationBar="False">
+    <navigationdrawer:SfNavigationDrawer Grid.Row="0" x:Name="navigationDrawer"  DrawerWidth="260" DrawerHeaderHeight="50000">
+        <navigationdrawer:SfNavigationDrawer.ContentView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="62"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="52"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Orientation="Horizontal"  >
+
+                    <buttons:SfButton Grid.Row="0" Grid.Column="0" ImageSource="menu0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageWidth="36" WidthRequest="36" HeightRequest="48" Clicked="menuBtn_Clicked" ></buttons:SfButton>
+
+                    <!-- <Button x:Name="menuButton" ImageSource="menu0.png"  WidthRequest="5" HeightRequest="5" Clicked="Button_Clicked"></Button>-->
+                    <Image HorizontalOptions="CenterAndExpand" Source="banner0.png" Aspect="AspectFit" WidthRequest="180" HeightRequest="180"></Image>
+                </StackLayout>
+                <Frame Grid.Row="1" Margin="0,10,0,0"  HasShadow="True" >
+                    <StackLayout  Margin="-18,0,0,0"  Orientation="Horizontal">
+                        <buttons:SfButton ImageSource="camera0.png"   HorizontalOptions="Start" 
+                    BackgroundColor="Transparent" ShowIcon="True" ImageWidth="32" WidthRequest="32" HeightRequest="32" Clicked="menuBtn_Clicked" ></buttons:SfButton>
+                        <buttons:SfButton CornerRadius="8" BackgroundColor="Transparent" BorderWidth="1" TextColor="#666666" BorderColor="#666666" Text="Bugün Hangi Yemeği Yaptın?" WidthRequest="220" HeightRequest="36" HorizontalOptions="CenterAndExpand" Clicked="postIslemi_Clicked"></buttons:SfButton>
+                        <buttons:SfButton ImageSource="gallery0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageWidth="32" WidthRequest="32" HeightRequest="32" HorizontalOptions="End" Clicked="menuBtn_Clicked" ></buttons:SfButton>
+
+                    </StackLayout>
+                </Frame>
+                <ScrollView Grid.Row="2" x:Name="scrollViewim" ChildAdded="scrollViewim_ChildAdded">
+                    <StackLayout x:Name="icerikSayfa">
+                        
+                    </StackLayout>
+                 
+                </ScrollView>
+
+                <Grid Grid.Row="3" HorizontalOptions="CenterAndExpand"> <!--alt menuler-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <buttons:SfButton  Grid.Column="0" TextColor="Black"  Text="Topluluk" Clicked="communityBtn_Clicked_1" ImageSource="community1.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Top"  ></buttons:SfButton>
+                    <buttons:SfButton  Grid.Column="1" TextColor="Black"  Text="Ana Sayfa" Clicked="homeBtn_Clicked" ImageSource="homeicon0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Top"  ></buttons:SfButton>
+                    <buttons:SfButton  Grid.Column="2" TextColor="Black" Text="Günlük" Clicked="reportBtn_Clicked" ImageSource="report0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Top"  ></buttons:SfButton>
+
+                </Grid>
+
+
+
+
+            </Grid>
+
+        </navigationdrawer:SfNavigationDrawer.ContentView>
+        <navigationdrawer:SfNavigationDrawer.DrawerHeaderView>
+            <Grid BackgroundColor="#FFFFFF">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="180"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" BackgroundColor="#3498DB" >
+                    <Image Margin="0,18,0,0" x:Name="userImage" Source="userprofile.png" WidthRequest="120" HeightRequest="120"></Image>
+                    <Label FontAttributes="Bold" TextColor="White" HorizontalOptions="CenterAndExpand" x:Name="lblKullanici" Text="Hoşgeldiniz Hakan Yusufoğlu"></Label>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Margin="6,55,0,0" Spacing="20"> <!--acilir menu buttonları-->
+                    <buttons:SfButton FontSize="16"  TextColor="Black"  Text="Ana Sayfa" Clicked="homeBtn_Clicked" ImageSource="homeicon0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start" HorizontalTextAlignment="Start"  ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black"  HorizontalTextAlignment="Start" Clicked="communityBtn_Clicked_1" Text="Topluluk" ImageSource="community1.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black" Text="Günlük" Clicked="reportBtn_Clicked" ImageSource="report0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  HorizontalTextAlignment="Start" ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black" Text="Besin Değerini Öğren" Clicked="nutritiveBtn_Clicked_1" ImageSource="fish0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  HorizontalTextAlignment="Start" ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black" Text="Bize Ulaşın" Clicked="contactUsBtn_Clicked_1"  ImageSource="feedback0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start"  HorizontalTextAlignment="Start" ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black" Text="Ayarlar"  ImageSource="settings0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start" x:Name="btnSettings" Clicked="btnSettings_Clicked"   HorizontalTextAlignment="Start" ></buttons:SfButton>
+                    <buttons:SfButton FontSize="16" TextColor="Black" Text="Oturumu Kapat"   ImageSource="oturum0.png"  
+                    BackgroundColor="Transparent" ShowIcon="True" ImageAlignment="Start" x:Name="oturumuKapat" Clicked="oturumuKapat_Clicked" HorizontalTextAlignment="Start" ></buttons:SfButton>
+                </StackLayout>
+            </Grid>
+        </navigationdrawer:SfNavigationDrawer.DrawerHeaderView>
+    </navigationdrawer:SfNavigationDrawer>
+
+</ContentPage>

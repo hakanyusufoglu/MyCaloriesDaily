@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d"
+             x:Class="MyCaloriesDaily.Sayfalar.test">
+    <sfPopup:SfPopupLayout x:Name="popupLayout">
+        <sfPopup:SfPopupLayout.PopupView >
+            
+            <sfPopup:PopupView AppearanceMode="TwoButton" AcceptButtonText="Onayla" DeclineButtonText="Vazgeç"  HeaderTitle="Yiyeceğin Miktarını Giriniz" AnimationMode="Zoom" >
+                <sfPopup:PopupView.PopupStyle>
+                    <sfPopup:PopupStyle HeaderBackgroundColor="#33569F"  HeaderFontFamily="Helvetica-Bold" HeaderTextColor="White" DeclineButtonBackgroundColor="#FF0000" DeclineButtonTextColor="White" AcceptButtonTextColor="White" AcceptButtonBackgroundColor="#28B351" >
+                        
+                    </sfPopup:PopupStyle>
+                </sfPopup:PopupView.PopupStyle>
+                <sfPopup:PopupView.ContentTemplate>
+                    <DataTemplate>
+                        <Grid HeightRequest="250">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackLayout  Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="8">
+                            <Label FontSize="14" TextColor="Black" Text="Yiyecek Adı: Levrek "></Label>
+                            <Label Margin="0,6,0,10" FontSize="14" TextColor="Black" Text="Kalorisi: 150 "></Label>
+                            <inputLayout:SfTextInputLayout
+                    Hint="Yiyeceğin miktarını giriniz"
+
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="8"
+                    HasError="False"
+                    x:Name="miktarKontrol"
+                    ErrorText="Gerekli alan*"
+                    
+                     LeadingViewPosition="Inside" >
+                                <Entry x:Name="miktarText" Text="1" Keyboard="Numeric" />
+                                <inputLayout:SfTextInputLayout.LeadingView>
+                                    <Image Source="eat.png"></Image>
+                                </inputLayout:SfTextInputLayout.LeadingView>
+
+                            </inputLayout:SfTextInputLayout>
+                             
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </sfPopup:PopupView.ContentTemplate>
+            </sfPopup:PopupView>
+        </sfPopup:SfPopupLayout.PopupView>
+        <sfPopup:SfPopupLayout.Content>
+            <StackLayout x:Name="layout">
+                <Button x:Name="clickToShowPopup" Text="ClickToShowPopup" VerticalOptions="Start" 
+               HorizontalOptions="FillAndExpand"  Clicked="clickToShowPopup_Clicked_1" />
+            </StackLayout>
+        </sfPopup:SfPopupLayout.Content>
+    </sfPopup:SfPopupLayout>
+
+</ContentPage>
